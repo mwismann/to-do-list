@@ -1,4 +1,3 @@
-import _ from 'lodash';
 import './style.css';
 
 const tasks = [
@@ -28,10 +27,25 @@ const tasks = [
     index: 4,
   },
 ];
-// const tasksContainer = document.querySelector('ul');
+const tasksContainer = document.querySelector('ul');
 
-// const renderList = () => {
-//   tasks.forEach(task => {
+const renderList = () => {
+  tasks.forEach((task) => {
+    const li = document.createElement('li');
+    const checkbox = document.createElement('input');
+    const p = document.createElement('p');
+    const span = document.createElement('span');
+    const icon = document.createElement('i');
 
-//   })
-// }
+    checkbox.setAttribute('type', 'checkbox');
+    p.textContent = `${task.description}`;
+    icon.classList.add('las');
+    icon.classList.add('la-ellipsis-v');
+
+    span.appendChild(icon);
+    li.append(checkbox, p, span);
+    tasksContainer.appendChild(li);
+  });
+};
+
+renderList();
