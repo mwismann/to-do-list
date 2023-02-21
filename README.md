@@ -64,7 +64,7 @@
 
 ## 🚀 Live Demo <a name="live-demo"></a>
 
-- https://mwismann.github.io/awesome-books-with-es6/
+- At the moment, the project doesn't have a live demo
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
