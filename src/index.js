@@ -1,14 +1,37 @@
 import _ from 'lodash';
 import './style.css';
 
-const component = () => {
-  const element = document.createElement('div');
+const tasks = [
+  {
+    description: 'I am a task',
+    completed: false,
+    index: 0,
+  },
+  {
+    description: 'I am a task',
+    completed: false,
+    index: 1,
+  },
+  {
+    description: 'I am a task',
+    completed: false,
+    index: 2,
+  },
+  {
+    description: 'I am a task',
+    completed: false,
+    index: 3,
+  },
+  {
+    description: 'I am a task',
+    completed: false,
+    index: 4,
+  },
+];
+// const tasksContainer = document.querySelector('ul');
 
-  // Lodash, now imported by this script
-  element.innerHTML = _.join(['Hello', 'webpack'], ' ');
-  element.classList.add('hello');
+// const renderList = () => {
+//   tasks.forEach(task => {
 
-  return element;
-};
-
-document.body.appendChild(component());
+//   })
+// }

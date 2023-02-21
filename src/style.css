@@ -1,7 +1,77 @@
-body {
-  background-color: bisque;
+* {
+  margin: 0;
+  padding: 0;
+  font-family: 'Roboto', sans-serif;
+  box-sizing: border-box;
+
+  --main-gray-color: rgba(200, 200, 200, 0.8);
 }
 
-.hello {
-  color: red;
+body {
+  background-color: rgb(249, 249, 249);
+}
+
+.container {
+  width: 50%;
+  margin: 10% auto;
+  background-color: #fff;
+  box-shadow: 0 2px 6px 2px var(--main-gray-color);
+  border-bottom-left-radius: 0.25rem;
+  border-bottom-right-radius: 0.25rem;
+}
+
+.list-title,
+.add-task,
+li {
+  padding: 1rem 1.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 2px solid var(--main-gray-color);
+}
+
+.las.la-sync,
+.las.la-ellipsis-v {
+  color: rgb(114, 114, 114);
+}
+
+.las.la-sync:hover,
+.las.la-share:hover,
+.las.la-ellipsis-v:hover {
+  color: black;
+  cursor: pointer;
+  scale: 1.1;
+}
+
+.add-task {
+  color: rgb(114, 114, 114);
+}
+
+li {
+  justify-content: flex-start;
+  gap: 1.5rem;
+  list-style: none;
+}
+
+li > input:hover {
+  cursor: pointer;
+}
+
+li > p {
+  flex: 100%;
+}
+
+.btn {
+  padding: 1rem;
+  width: 100%;
+  color: rgb(114, 114, 114);
+  border: none;
+  border-bottom-left-radius: 0.25rem;
+  border-bottom-right-radius: 0.25rem;
+}
+
+.btn:hover {
+  color: black;
+  text-decoration: underline;
+  cursor: pointer;
 }
