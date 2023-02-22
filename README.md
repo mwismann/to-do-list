@@ -114,7 +114,7 @@ Clone this repository to your desired folder:
 
 - GitHub: [@mwismann](https://github.com/mwismann)
 - Twitter: [@mathias_wismann](https://twitter.com/mathias_wismann)
-- LinkedIn: [Mathias Wismann](https://linkedin.com/in/mathías-wismann-bertolucci-8812a4194/)
+- LinkedIn: [Mathias Wismann](https://www.linkedin.com/in/math%C3%ADas-wismann/)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
