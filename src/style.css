@@ -31,13 +31,27 @@ li {
 }
 
 .las.la-sync,
-.las.la-ellipsis-v {
+.las.la-ellipsis-v,
+.las.la-trash {
   color: rgb(114, 114, 114);
+}
+
+.las.la-trash {
+  display: none;
+}
+
+.las.la-ellipsis-v.hide {
+  display: none;
+}
+
+.las.la-trash.active {
+  display: block;
 }
 
 .las.la-sync:hover,
 .las.la-share:hover,
-.las.la-ellipsis-v:hover {
+.las.la-ellipsis-v:hover,
+.las.la-trash:hover {
   color: black;
   cursor: pointer;
   scale: 1.1;
@@ -47,18 +61,44 @@ li {
   color: rgb(114, 114, 114);
 }
 
+#new-task {
+  width: 90%;
+  border: none;
+  outline: none;
+}
+
 li {
   justify-content: flex-start;
   gap: 1.5rem;
   list-style: none;
 }
 
-li > input:hover {
+li.active {
+  background-color: rgb(255, 255, 208);
+}
+
+.checkbox:hover {
   cursor: pointer;
 }
 
 li > p {
   flex: 100%;
+}
+
+li > p.hide {
+  display: none;
+}
+
+.edit-task {
+  display: none;
+  flex: 100%;
+  background-color: rgb(255, 255, 208);
+  border: none;
+  outline: none;
+}
+
+.edit-task.active {
+  display: block;
 }
 
 .btn {
