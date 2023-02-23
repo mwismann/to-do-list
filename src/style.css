@@ -61,8 +61,12 @@ li {
   color: rgb(114, 114, 114);
 }
 
-#new-task {
+form {
   width: 90%;
+}
+
+#new-task {
+  width: 100%;
   border: none;
   outline: none;
 }
@@ -73,7 +77,7 @@ li {
   list-style: none;
 }
 
-li.active {
+li.editing {
   background-color: rgb(255, 255, 208);
 }
 
@@ -81,24 +85,11 @@ li.active {
   cursor: pointer;
 }
 
-li > p {
+.task-description {
   flex: 100%;
-}
-
-li > p.hide {
-  display: none;
-}
-
-.edit-task {
-  display: none;
-  flex: 100%;
-  background-color: rgb(255, 255, 208);
+  background-color: transparent;
   border: none;
   outline: none;
-}
-
-.edit-task.active {
-  display: block;
 }
 
 .btn {
