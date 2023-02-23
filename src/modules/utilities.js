@@ -5,14 +5,14 @@ let toDoList = localStorage.getItem('toDoList') ? JSON.parse(localStorage.getIte
 const tasksContainer = document.querySelector('ul');
 const form = document.querySelector('form');
 const newTaskInput = document.getElementById('new-task');
-let indexCounter = 0;
+let indexCounter = 1;
 
 // -------- Functions --------------------------
 const renderList = () => {
   tasksContainer.innerHTML = '';
   toDoList.forEach((task) => {
     tasksContainer.insertAdjacentHTML('beforeend',
-      `<li>
+      `<li data-id="${task.index}">
       <input type="checkbox" class="checkbox">
       <input type="text" class="task-description" data-id="${task.index}" value="${task.description}" readonly>
       <span>
@@ -24,10 +24,10 @@ const renderList = () => {
 
   // ----------- To-Do List Functionality ----------------
   const editTask = (i) => {
-    const options = document.querySelectorAll('.las.la-ellipsis-v')[i];
-    const remove = document.querySelectorAll('.las.la-trash')[i];
-    const description = document.querySelectorAll('.task-description')[i];
-    const task = document.querySelectorAll('li')[i];
+    const options = document.querySelector(`.las.la-ellipsis-v[data-id="${i}"]`);
+    const remove = document.querySelector(`.las.la-trash[data-id="${i}"]`);
+    const description = document.querySelector(`.task-description[data-id="${i}"]`);
+    const task = document.querySelector(`li[data-id="${i}"]`);
 
     task.classList.add('editing');
     options.classList.add('hide');
@@ -36,12 +36,14 @@ const renderList = () => {
   };
 
   const updateTask = (i) => {
-    const editedDescription = document.querySelectorAll('.task-description')[+i];
+    const editedDescription = document.querySelector(`.task-description[data-id="${i}"]`);
     if (editedDescription.value.trim() === '') {
       return;
     }
 
-    toDoList[i].description = editedDescription.value;
+    const index = toDoList.findIndex((task) => task.index === +i);
+
+    toDoList[index].description = editedDescription.value;
     localStorage.setItem('toDoList', JSON.stringify(toDoList));
     renderList();
   };
@@ -52,7 +54,7 @@ const renderList = () => {
       indexCounter += 1;
     });
     localStorage.setItem('toDoList', JSON.stringify(toDoList));
-    indexCounter = 0;
+    indexCounter = 1;
   };
 
   const removeTask = (index) => {
@@ -88,7 +90,7 @@ const addTask = () => {
 
   const newTask = new Task({
     description: newTaskInput.value,
-    index: toDoList.length,
+    index: toDoList.length + 1,
   });
 
   toDoList.push(newTask);
