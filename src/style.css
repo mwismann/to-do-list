@@ -32,8 +32,11 @@ li {
 
 .las.la-sync,
 .las.la-ellipsis-v,
-.las.la-trash {
+.las.la-trash,
+#new-task-btn {
   color: rgb(114, 114, 114);
+  border: none;
+  background-color: transparent;
 }
 
 .las.la-trash {
@@ -49,7 +52,7 @@ li {
 }
 
 .las.la-sync:hover,
-.las.la-share:hover,
+#new-task-btn:hover,
 .las.la-ellipsis-v:hover,
 .las.la-trash:hover {
   color: black;
@@ -62,7 +65,8 @@ li {
 }
 
 form {
-  width: 90%;
+  width: 100%;
+  display: flex;
 }
 
 #new-task {

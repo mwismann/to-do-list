@@ -1,5 +1,5 @@
 import './style.css';
-import { form, clearBtn } from './modules/declarations.js';
+import { form, newTaskBtn, clearBtn } from './modules/declarations.js';
 import {
   addTask, renderList,
 } from './modules/utilities.js';
@@ -9,6 +9,10 @@ import {
 
 renderList();
 form.addEventListener('submit', (e) => {
+  e.preventDefault();
+  addTask();
+});
+newTaskBtn.addEventListener('submit', (e) => {
   e.preventDefault();
   addTask();
 });
