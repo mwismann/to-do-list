@@ -64,7 +64,7 @@
 
 ## 🚀 Live Demo <a name="live-demo"></a>
 
-- At the moment, the project doesn't have a live demo
+- https://mwismann.github.io/to-do-list/dist/
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
