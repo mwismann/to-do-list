@@ -1,9 +1,10 @@
 import './style.css';
+import { form, clearBtn } from './modules/declarations.js';
 import {
-  form, addTask, renderList,
+  addTask, renderList,
 } from './modules/utilities.js';
 import {
-  clearBtn, clearCompleted,
+  clearCompleted,
 } from './modules/interactivity.js';
 
 renderList();

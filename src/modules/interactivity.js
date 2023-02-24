@@ -1,8 +1,5 @@
-// ---------- Declarations --------------------
-const toDoList = localStorage.getItem('toDoList') ? JSON.parse(localStorage.getItem('toDoList')) : [];
-const clearBtn = document.querySelector('.btn');
+import { toDoList } from './declarations.js';
 
-// ---------- Functions -----------------------
 const updateStatus = (id) => {
   const checkbox = document.querySelector(`.checkbox[data-id="${id}"]`);
   const index = toDoList.findIndex((task) => task.index === +id);
@@ -24,4 +21,4 @@ const clearCompleted = () => {
   window.location.reload();
 };
 
-export { clearBtn, updateStatus, clearCompleted };
+export { updateStatus, clearCompleted };

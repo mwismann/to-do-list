@@ -92,6 +92,12 @@ li.editing {
   outline: none;
 }
 
+.task-description.completed {
+  font-weight: bold;
+  color: rgb(0, 140, 255);
+  text-decoration: line-through;
+}
+
 .btn {
   padding: 1rem;
   width: 100%;

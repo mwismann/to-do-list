@@ -1,22 +1,16 @@
 import Task from './class.js';
+import { toDoList, container, newTaskInput } from './declarations.js';
 import {
   updateStatus,
 } from './interactivity.js';
 
-// --------- Declarations ------------
-let toDoList = localStorage.getItem('toDoList') ? JSON.parse(localStorage.getItem('toDoList')) : [];
-const container = document.querySelector('ul');
-const form = document.querySelector('form');
-const newTaskInput = document.getElementById('new-task');
-
-// -------- Functions ----------------
 const renderList = () => {
   container.innerHTML = '';
   toDoList.forEach((task) => {
     container.insertAdjacentHTML('beforeend',
       `<li data-id="${task.index}">
       <input type="checkbox" class="checkbox" data-id="${task.index}" ${(task.completed === true) ? 'checked' : ''}>
-      <input type="text" class="task-description" data-id="${task.index}" value="${task.description}" readonly>
+      <input type="text" class="task-description ${(task.completed === true) ? 'completed' : ''}" data-id="${task.index}" value="${task.description}" readonly>
       <span>
         <i class="las la-ellipsis-v" data-id="${task.index}"></i>
         <i class="las la-trash" data-id="${task.index}"></i>
@@ -110,5 +104,5 @@ const addTask = () => {
 };
 
 export {
-  form, addTask, renderList,
+  addTask, renderList,
 };
