@@ -1,20 +1,16 @@
 import Task from './class.js';
+import { toDoList, container, newTaskInput } from './declarations.js';
+import {
+  updateStatus,
+} from './interactivity.js';
 
-// --------- Pre rendering variables ------------
-let toDoList = localStorage.getItem('toDoList') ? JSON.parse(localStorage.getItem('toDoList')) : [];
-const tasksContainer = document.querySelector('ul');
-const form = document.querySelector('form');
-const newTaskInput = document.getElementById('new-task');
-let indexCounter = 1;
-
-// -------- Functions --------------------------
 const renderList = () => {
-  tasksContainer.innerHTML = '';
+  container.innerHTML = '';
   toDoList.forEach((task) => {
-    tasksContainer.insertAdjacentHTML('beforeend',
+    container.insertAdjacentHTML('beforeend',
       `<li data-id="${task.index}">
-      <input type="checkbox" class="checkbox">
-      <input type="text" class="task-description" data-id="${task.index}" value="${task.description}" readonly>
+      <input type="checkbox" class="checkbox" data-id="${task.index}" ${(task.completed === true) ? 'checked' : ''}>
+      <input type="text" class="task-description ${(task.completed === true) ? 'completed' : ''}" data-id="${task.index}" value="${task.description}" readonly>
       <span>
         <i class="las la-ellipsis-v" data-id="${task.index}"></i>
         <i class="las la-trash" data-id="${task.index}"></i>
@@ -23,11 +19,11 @@ const renderList = () => {
   });
 
   // ----------- To-Do List Functionality ----------------
-  const editTask = (i) => {
-    const options = document.querySelector(`.las.la-ellipsis-v[data-id="${i}"]`);
-    const remove = document.querySelector(`.las.la-trash[data-id="${i}"]`);
-    const description = document.querySelector(`.task-description[data-id="${i}"]`);
-    const task = document.querySelector(`li[data-id="${i}"]`);
+  const editTask = (id) => {
+    const options = document.querySelector(`.las.la-ellipsis-v[data-id="${id}"]`);
+    const remove = document.querySelector(`.las.la-trash[data-id="${id}"]`);
+    const description = document.querySelector(`.task-description[data-id="${id}"]`);
+    const task = document.querySelector(`li[data-id="${id}"]`);
 
     task.classList.add('editing');
     options.classList.add('hide');
@@ -35,33 +31,29 @@ const renderList = () => {
     description.readOnly = false;
   };
 
-  const updateTask = (i) => {
-    const editedDescription = document.querySelector(`.task-description[data-id="${i}"]`);
+  const updateTask = (id) => {
+    const editedDescription = document.querySelector(`.task-description[data-id="${id}"]`);
     if (editedDescription.value.trim() === '') {
       return;
     }
 
-    const index = toDoList.findIndex((task) => task.index === +i);
+    const index = toDoList.findIndex((task) => task.index === +id);
 
     toDoList[index].description = editedDescription.value;
     localStorage.setItem('toDoList', JSON.stringify(toDoList));
     renderList();
   };
 
-  const updateTaskIndex = () => {
-    toDoList.forEach((task) => {
-      task.index = indexCounter;
-      indexCounter += 1;
-    });
-    localStorage.setItem('toDoList', JSON.stringify(toDoList));
-    indexCounter = 1;
-  };
-
   const removeTask = (index) => {
-    toDoList = toDoList.filter((task) => task.index !== +index);
-    localStorage.setItem('toDoList', JSON.stringify(toDoList));
-    updateTaskIndex();
-    renderList();
+    const filteredList = toDoList.filter((task) => task.index !== +index);
+    let i = 1;
+    filteredList.forEach((task) => {
+      task.index = i;
+      i += 1;
+    });
+
+    localStorage.setItem('toDoList', JSON.stringify(filteredList));
+    window.location.reload();
   };
 
   document.querySelectorAll('.la-ellipsis-v').forEach((btn) => {
@@ -79,6 +71,14 @@ const renderList = () => {
   document.querySelectorAll('.la-trash').forEach((btn) => {
     btn.addEventListener('click', (e) => {
       removeTask(e.target.dataset.id);
+    });
+  });
+
+  // ---------- To-Do List Interactivity -------------------
+  const checkboxArr = document.querySelectorAll('.checkbox');
+  checkboxArr.forEach((box) => {
+    box.addEventListener('change', (e) => {
+      updateStatus(e.target.dataset.id);
     });
   });
 };
@@ -100,5 +100,5 @@ const addTask = () => {
 };
 
 export {
-  tasksContainer, form, addTask, renderList,
+  addTask, renderList,
 };
