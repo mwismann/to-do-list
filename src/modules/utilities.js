@@ -44,20 +44,16 @@ const renderList = () => {
     renderList();
   };
 
-  const updateTaskIndex = () => {
+  const removeTask = (index) => {
+    const filteredList = toDoList.filter((task) => task.index !== +index);
     let i = 1;
-    toDoList.forEach((task) => {
+    filteredList.forEach((task) => {
       task.index = i;
       i += 1;
     });
-    localStorage.setItem('toDoList', JSON.stringify(toDoList));
-  };
 
-  const removeTask = (index) => {
-    toDoList = toDoList.filter((task) => task.index !== +index);
-    localStorage.setItem('toDoList', JSON.stringify(toDoList));
-    updateTaskIndex();
-    renderList();
+    localStorage.setItem('toDoList', JSON.stringify(filteredList));
+    window.location.reload();
   };
 
   document.querySelectorAll('.la-ellipsis-v').forEach((btn) => {
