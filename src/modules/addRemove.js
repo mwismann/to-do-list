@@ -1,7 +1,7 @@
 import { Save, Load } from './localStorage.js';
 
 export const addTask = (updateList, value) => {
-  let tasks = Load();
+  const tasks = Load();
   tasks.push({
     completed: false,
     description: value,
@@ -12,8 +12,8 @@ export const addTask = (updateList, value) => {
 };
 
 export const removeTask = (taskIndex, updateList) => {
-  let tasks = Load();
-  const filteredTasks = tasks.filter((task) => task.index !== taskIndex)
+  const tasks = Load();
+  const filteredTasks = tasks.filter((task) => task.index !== taskIndex);
 
   Save(filteredTasks);
   updateList();
