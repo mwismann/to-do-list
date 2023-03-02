@@ -23,7 +23,7 @@ describe('Tests for add and remove functions', () => {
     const dom = new JSDOM('<ul class="list" id="list"></ul>');
     global.document = dom.window.document;
 
-    addTask(updateList, 'task number 1');
+    addTask(updateList, 'task 1');
     const li = document.querySelectorAll('#list li');
 
     expect(li).toHaveLength(1);
