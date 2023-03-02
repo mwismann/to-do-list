@@ -25,8 +25,8 @@ describe('Tests for editTask, updateStatus and clearCompleted functions', () => 
     global.document = dom.window.document;
     addTask(updateList, 'task 1');
     const tasks = Load();
-    
-    expect(tasks[0].description).toBe('task 1')
+
+    expect(tasks[0].description).toBe('task 1');
     editTask(tasks, 0, 'task 1 edited');
 
     expect(tasks[0].description).toBe('task 1 edited');
@@ -36,14 +36,14 @@ describe('Tests for editTask, updateStatus and clearCompleted functions', () => 
     const dom = new JSDOM('<ul class="list" id="list"></ul>');
     global.document = dom.window.document;
     const tasks = Load();
-    
-    expect(tasks.length).toBe(1)
+
+    expect(tasks.length).toBe(1);
     expect(tasks[0].completed).toBe(false);
     updateStatus(tasks, 0, true);
 
     expect(tasks[0].completed).toBe(true);
   });
-  
+
   test('Test: clearCompleted should clear all completed tasks from the list', () => {
     const dom = new JSDOM('<ul class="list" id="list"></ul>');
     global.document = dom.window.document;
@@ -53,7 +53,7 @@ describe('Tests for editTask, updateStatus and clearCompleted functions', () => 
     let tasks = Load();
     updateStatus(tasks, 1, true);
     updateStatus(tasks, 2, true);
-    
+
     tasks = Load();
     clearCompleted(tasks, updateList);
     const li = document.querySelectorAll('#list li');
